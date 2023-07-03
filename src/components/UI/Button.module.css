@@ -1,0 +1,28 @@
+.button {
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    color: white;
+    background-color: #8a2b06;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 1rem ;
+    display: block;
+    cursor: pointer;
+}
+
+.isCancel {
+    background-color: white;
+    color: #8a2b06;
+}
+
+.button:hover,
+.button:active {
+  background-color: #641e03;
+  border-color: #641e03;
+}
+
+.isCancel:hover,
+.isCancel:active {
+  background-color: #d4b7ab;
+  border-color: #641e03;
+}

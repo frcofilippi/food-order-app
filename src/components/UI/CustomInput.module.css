@@ -1,0 +1,14 @@
+.input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.input label {
+    font-weight: bold;
+}
+
+.input input {
+    width: 2.5rem;
+    text-align: center;
+}

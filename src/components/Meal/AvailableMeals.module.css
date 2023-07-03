@@ -1,0 +1,54 @@
+.meals {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: meals-appear 1s ease-out forwards;
+}
+
+.meals ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes meals-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* .meal-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid grey;
+  padding: 0.5rem 0;
+}
+
+.meal-item li {
+  list-style: none;
+}
+
+.meal-item span {
+  display: block;
+  padding: 0.1rem;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-description {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.price {
+  font-weight: bold;
+  color: rgb(185,69,23);
+} */
