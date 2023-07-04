@@ -17,15 +17,12 @@
   border: 1px solid darkgrey;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   z-index: 11;
   padding: 1rem;
-  justify-content: space-around;
+  animation: slide-down 300ms ease-out forwards;
 }
 
-.modal-content {
+/* .modal-content {
   width: 100%;
 }
 
@@ -35,4 +32,4 @@
   justify-content: space-between;
   gap: 1rem;
   width: 35%;
-}
+} */

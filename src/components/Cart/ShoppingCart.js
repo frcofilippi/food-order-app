@@ -1,3 +1,4 @@
+import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import classes from "./ShoppingCart.module.css";
 
@@ -9,15 +10,26 @@ const ShoppingCart = (props) => {
     { id: "4", name: "Sushi3", quantity: "4", price: "10.00" },
   ];
   const cartItems = dummyCartItems.map((item) => (
-    <li key={item.id}>{item.name}</li>
+    <div>
+      <li key={item.id}>{item.name}</li>
+    </div>
   ));
 
   return (
-    <Modal>
-      <ul>{cartItems}</ul>
+    <Modal onClose={props.onClose}>
+      <ul className={classes.cartItems}>{cartItems}</ul>
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>35.62</span>
+        <span className={classes["total-amount"]}>$35.62</span>
+      </div>
+      <div className={classes.actions}>
+      <Button
+          label={"Cancel"}
+          isCancel={true}
+          onClick={props.onClose}
+          type="button"
+        />
+        <Button label={"Order"} />
       </div>
     </Modal>
   );
