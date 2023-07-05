@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import Button from "../../UI/Button";
 import CustomInput from "../../UI/CustomInput";
-// import classes from "./MealForm.module.css";
+import CartContext from "../../../store/cart-context";
 
 const MealForm = (props) => {
+  const cartCtx = useContext(CartContext);
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(
-      `Added ${event.target.elements.qty.value} item: ${props.itemId} to the bag`
-    );
+    const qty = event.target.elements.qty.value;
+    console.log(`Added ${qty} item: ${props.item.price} to the bag`);
+    cartCtx.addItem({ ...props.item, qty });
   };
   return (
     <form onSubmit={(event) => onSubmitHandler(event)}>
@@ -20,7 +23,7 @@ const MealForm = (props) => {
         step={1}
         defaultValue={1}
       />
-      <Button label={"Add to bag"}/>
+      <Button label={"Add to bag"} />
     </form>
   );
 };

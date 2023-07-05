@@ -2,7 +2,7 @@ import { useState } from "react";
 import CartContext from "./cart-context";
 
 const CartProvider = (props) => {
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
 
   const onAddItem = (item) => {
     setItems([...items, item]);
@@ -14,15 +14,15 @@ const CartProvider = (props) => {
     setItems(newItems);
   };
 
+  const cartCtx = {
+    items: items,
+    totalAmount: 0,
+    addItem: onAddItem,
+    removeItem: onRemoveItem,
+  };
+
   return (
-    <CartContext.Provider
-      value={{
-        items: items,
-        totalAmount: 0,
-        addItem: onAddItem,
-        removeItem: onRemoveItem,
-      }}
-    >
+    <CartContext.Provider value={cartCtx}>
       {props.children}
     </CartContext.Provider>
   );
