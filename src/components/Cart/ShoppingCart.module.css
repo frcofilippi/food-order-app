@@ -1,6 +1,8 @@
 .cartItems {
   list-style: none;
   padding: 0.5rem 0;
+  overflow: auto;
+  max-height: 20rem;
 }
 
 .total {
@@ -19,7 +21,7 @@
   color: rgb(185, 69, 23);
   padding-left: 2rem;
   padding-right: 2rem;
-  border-top: 1px solid black;
+  font-size: 1.5rem;
 }
 
 .actions {
@@ -30,5 +32,10 @@
 }
 
 .actions button {
-    width: 7rem;
+  width: 7rem;
+}
+
+.cart-empty {
+  color: darkgray;
+  text-align: center;
 }

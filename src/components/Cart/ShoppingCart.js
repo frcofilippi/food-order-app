@@ -3,34 +3,50 @@ import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import classes from "./ShoppingCart.module.css";
 import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
 
 const ShoppingCart = (props) => {
-  // const dummyCartItems = [
-  //   { id: "1", name: "Sushi", quantity: "2", price: "22.99" },
-  //   { id: "2", name: "Sushi1", quantity: "1", price: "12.15" },
-  //   { id: "3", name: "Sushi2", quantity: "1", price: "1" },
-  //   { id: "4", name: "Sushi3", quantity: "4", price: "10.00" },
-  // ];
+  const cartCtx = useContext(CartContext);
 
-const cartCtx = useContext(CartContext);
+const onRemoveHandler = (id) => {
+  console.log('Remove item clicked', id);
+  cartCtx.removeItem(id);
+}
 
-  const cartItems = cartCtx.items.map((item) => (
-    <div>
-      <li key={item.id}>{`${item.itemName} - ${item.qty} - ${item.price}`}</li>
-    </div>
-  ));
+const onAddHandler = (item) => {
+  console.log('Add more clicked', item);
+  cartCtx.addItem(item);
+}
 
-  const totalAmount = cartCtx.items.reduce((acum,currItem) => acum + (currItem.price*currItem.qty),0);
+  const cartItemList = cartCtx.items.map((item) => {
+    return (
+      <CartItem
+        key={item.id}
+        name={item.itemName}
+        qty={item.qty}
+        price={item.price}
+        onRemove={() => onRemoveHandler(item.id)}
+        onAdd={() => onAddHandler({...item, qty: 1})}
+      />
+    );
+  });
 
-  return (
-    <Modal onClose={props.onClose}>
-      <ul className={classes.cartItems}>{cartItems}</ul>
+  const totalAmount = cartCtx.items.reduce(
+    (acum, currItem) => acum + currItem.price * currItem.qty,
+    0
+  );
+
+  const cartContent = (
+    <>
+      <ul className={classes.cartItems}>{cartItemList}</ul>
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span className={classes["total-amount"]}>{`$${totalAmount.toFixed(2)}`}</span>
+        <span className={classes["total-amount"]}>{`$${totalAmount.toFixed(
+          2
+        )}`}</span>
       </div>
       <div className={classes.actions}>
-      <Button
+        <Button
           label={"Cancel"}
           isCancel={true}
           onClick={props.onClose}
@@ -38,6 +54,16 @@ const cartCtx = useContext(CartContext);
         />
         <Button label={"Order"} />
       </div>
+    </>
+  );
+
+  return (
+    <Modal onClose={props.onClose}>
+      {cartCtx.items.length > 0 ? (
+        cartContent
+      ) : (
+        <h1 className={classes["cart-empty"]}>Your cart is empty</h1>
+      )}
     </Modal>
   );
 };
