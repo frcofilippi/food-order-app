@@ -3,6 +3,7 @@ import { useState } from "react";
 import Meals from "./components/Meal/Meals";
 import ShoppingCart from "./components/Cart/ShoppingCart";
 import CartProvider from "./store/CartProvider";
+import { CatalogProvider } from "./store/catalog-context";
 
 function App() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -20,7 +21,9 @@ function App() {
       <Header openCart={showShoppingCartHandlder} />
       <main>
         {cartIsVisible && <ShoppingCart onClose={hideShoppingCartHandlder} />}
-        <Meals />
+        <CatalogProvider>
+          <Meals />
+        </CatalogProvider>
       </main>
     </CartProvider>
   );

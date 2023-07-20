@@ -1,10 +1,12 @@
 import * as actionType from "./cart-reducer-actions";
 
-const cartReducer = (state, action) => {
+const defaultState = [];
+
+const cartReducer = (state = defaultState, action) => {
+  console.log(`state: ${JSON.stringify(state)}`);
   switch (action.type) {
     case actionType.ADD_ITEM_TO_CART: {
       console.log(actionType.ADD_ITEM_TO_CART, action.payload);
-
       if (state.find((item) => item.id === action.payload.item.id)) {
         const newState = [...state].map((item) => {
           if (item.id === action.payload.item.id) {
@@ -32,6 +34,9 @@ const cartReducer = (state, action) => {
         });
       }
       return state.filter((item) => item.id !== action.payload.id);
+    }
+    case actionType.CLEAR_ITEMS: {
+      return defaultState;
     }
     default: {
       return state;

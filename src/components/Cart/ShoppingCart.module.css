@@ -15,14 +15,16 @@
   font-weight: bold;
   font-size: larger;
   padding: 0.5rem;
+  color: rgb(77, 74, 74)
 }
 
 .total-amount {
-  color: rgb(185, 69, 23);
+  color: rgb(185, 69, 23) !important;
   padding-left: 2rem;
   padding-right: 2rem;
   font-size: 1.5rem;
 }
+
 
 .actions {
   display: flex;
@@ -38,4 +40,9 @@
 .cart-empty {
   color: darkgray;
   text-align: center;
+}
+
+.scroll {
+  height: 25%;
+  overflow-y: auto;
 }

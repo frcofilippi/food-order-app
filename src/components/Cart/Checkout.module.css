@@ -1,0 +1,43 @@
+.checkout-form {
+  padding: 1rem;
+  border-top: 1px solid grey;
+}
+
+.form-row {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.form-column {
+    flex: 1;
+    padding: 0 2rem 0 0;
+}
+
+.checkout-form input {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.checkout-form label {
+    font-weight: bold;
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.validationMessage {
+    color: rgb(179, 60, 60);
+    font-size: smaller;
+    margin: 0;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(77, 74, 74);
+  }

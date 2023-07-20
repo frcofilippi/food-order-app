@@ -33,12 +33,19 @@ const CartProvider = (props) => {
     });
   }
 
+  const onClearCart = () => {
+    dispatchCartAction({
+      type: actionType.CLEAR_ITEMS
+    })
+  }
+
   const cartCtx = {
     items: items,
     totalAmount: 0,
     addItem: onAddItem,
     removeItem: onRemoveItem,
-    lessItem: onLessItem
+    lessItem: onLessItem,
+    clearCart: onClearCart,
   };
 
   return (
